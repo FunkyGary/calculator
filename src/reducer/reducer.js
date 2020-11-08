@@ -9,15 +9,17 @@ export const reducer = (state = initState, action) => {
   switch (action.type) {
     case "OPERATOR": {
       if (action.value === "=") {
-        console.log(
-          `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
-        );
-        state.result = eval(
-          `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
-        );
-        state.firstNumber = state.result;
-        state.SecondNumber = "";
-        state.operator = "=";
+        if (state.firstNumber !== "" && state.SecondNumber !== "") {
+          console.log(
+            `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
+          );
+          state.result = eval(
+            `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
+          );
+          state.firstNumber = state.result;
+          state.SecondNumber = "";
+          state.operator = "=";
+        }
       } else if (action.value === "AC") {
         state = {
           result: 0,
