@@ -10,9 +10,6 @@ export const reducer = (state = initState, action) => {
     case "OPERATOR": {
       if (action.value === "=") {
         if (state.firstNumber !== "" && state.SecondNumber !== "") {
-          console.log(
-            `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
-          );
           state.result = eval(
             `${state.firstNumber} ${state.operator} ${state.SecondNumber}`
           );
@@ -27,11 +24,9 @@ export const reducer = (state = initState, action) => {
           SecondNumber: "",
           operator: null,
         };
-        console.log(state);
       } else {
         state.operator = action.value;
       }
-      console.log(state);
       return state;
     }
     case "NUMBER": {
@@ -57,7 +52,6 @@ export const reducer = (state = initState, action) => {
           state.result = state.SecondNumber;
         }
       }
-      console.log(state);
       return state;
     }
     default: {
